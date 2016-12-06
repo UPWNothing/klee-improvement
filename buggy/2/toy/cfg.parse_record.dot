@@ -1,0 +1,9 @@
+digraph "CFG for 'parse_record' function" {
+	label="CFG for 'parse_record' function";
+
+	Node0x1350ba0 [shape=record,label="{%0:\l  %1 = alloca %struct._IO_FILE*, align 8\l  %ret = alloca %struct.file_entry*, align 8\l  store %struct._IO_FILE* %f, %struct._IO_FILE** %1, align 8\l  call void @llvm.dbg.declare(metadata !\{%struct._IO_FILE** %1\}, metadata\l... !122), !dbg !123\l  call void @llvm.dbg.declare(metadata !\{%struct.file_entry** %ret\}, metadata\l... !124), !dbg !125\l  %2 = call noalias i8* @malloc(i64 24) #5, !dbg !125\l  %3 = bitcast i8* %2 to %struct.file_entry*, !dbg !125\l  store %struct.file_entry* %3, %struct.file_entry** %ret, align 8, !dbg !125\l  %4 = load %struct.file_entry** %ret, align 8, !dbg !126\l  %5 = bitcast %struct.file_entry* %4 to i8*, !dbg !126\l  %6 = load %struct._IO_FILE** %1, align 8, !dbg !126\l  %7 = call i64 @fread(i8* %5, i64 24, i64 1, %struct._IO_FILE* %6), !dbg !126\l  %8 = icmp ne i64 1, %7, !dbg !126\l  br i1 %8, label %9, label %10, !dbg !126\l|{<s0>T|<s1>F}}"];
+	Node0x1350ba0:s0 -> Node0x1351a20;
+	Node0x1350ba0:s1 -> Node0x1351a80;
+	Node0x1351a20 [shape=record,label="{%9:\l\l  call void @exit(i32 1) #6, !dbg !128\l  unreachable, !dbg !128\l}"];
+	Node0x1351a80 [shape=record,label="{%10:\l\l  %11 = load %struct.file_entry** %ret, align 8, !dbg !129\l  ret %struct.file_entry* %11, !dbg !129\l}"];
+}

@@ -1,0 +1,7 @@
+Error: external call with symbolic argument: printf
+File: /home/klee/toy_example_distrib/unmodified/toy/toy.c
+Line: 54
+assembly.ll line: 135
+Stack: 
+	#000000135 in consume_record (ent=54059744) at /home/klee/toy_example_distrib/unmodified/toy/toy.c:54
+	#100000192 in main (argc=2, argv=53743072) at /home/klee/toy_example_distrib/unmodified/toy/toy.c:72
