@@ -1,5 +1,0 @@
-digraph "CFG for 'lava_get' function" {
-	label="CFG for 'lava_get' function";
-
-	Node0x134c4c0 [shape=record,label="{%0:\l  %1 = alloca i32, align 4\l  store i32 %bug_num, i32* %1, align 4\l  call void @llvm.dbg.declare(metadata !\{i32* %1\}, metadata !122), !dbg !123\l  %2 = load i32* %1, align 4, !dbg !123\l  %3 = zext i32 %2 to i64, !dbg !123\l  %4 = getelementptr inbounds [1000000 x i32]* @lava_val, i32 0, i64 %3, !dbg\l... !123\l  %5 = load i32* %4, align 4, !dbg !123\l  ret i32 %5, !dbg !123\l}"];
-}
