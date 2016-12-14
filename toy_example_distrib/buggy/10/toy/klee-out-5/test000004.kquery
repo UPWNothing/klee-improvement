@@ -1,0 +1,45 @@
+array A-data[128] : w32 -> w8 = symbolic
+array A-data-stat[144] : w32 -> w8 = symbolic
+array entry[24] : w32 -> w8 = symbolic
+array model_version[4] : w32 -> w8 = symbolic
+array stdout-stat[144] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 A-data-stat)
+                          2147483647)))
+         (Ult (ReadLSB w64 56 A-data-stat)
+              65536)
+         (Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdout-stat)
+                          2147483647)))
+         (Ult (ReadLSB w64 56 stdout-stat)
+              65536)
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq false
+             (Eq 8192
+                 (And w32 (And w32 (ReadLSB w32 24 A-data-stat)
+                                   4294966784)
+                          61440)))
+         (Eq 1279350337
+             (ReadLSB w32 0 A-data))
+         (Eq false
+             (Eq 0
+                 (ReadLSB w16 8 A-data)))
+         (Eq false
+             (Ult (Add w64 16
+                           (Mul w64 24
+                                    (Select w64 (Or (Eq 1818326540
+                                                        N0:(Or w32 (Or w32 (Or w32 (Shl w32 (ZExt w32 (Read w8 17 entry))
+                                                                                            8)
+                                                                                   (ZExt w32 (Read w8 16 entry)))
+                                                                           (Shl w32 (ZExt w32 (Read w8 18 entry))
+                                                                                    16))
+                                                                   (Shl w32 (ZExt w32 (Read w8 19 entry))
+                                                                            24)))
+                                                    (Eq 209084780 N0))
+                                                (ZExt w64 N0)
+                                                0)))
+                  21))]
+        false)

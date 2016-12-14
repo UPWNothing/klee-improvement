@@ -1,0 +1,12 @@
+KLEE: Logging all queries in .kquery format to /home/klee/toy_example_distrib/buggy/10/toy/./klee-out-5/all-queries.kquery
+
+KLEE: ERROR: /home/klee/toy_example_distrib/buggy/10/toy/toy.c:54: memory error: out of bound pointer
+KLEE: NOTE: now ignoring this error at this location
+KLEE: KLEE: increased time budget from 5.000000 to 6.752365
+
+KLEE: KLEE: increased time budget from 6.752365 to 10.748772
+
+KLEE: KLEE: increased time budget from 10.748772 to 17.792349
+
+KLEE: KLEE: increased time budget from 17.792349 to 23.517224
+

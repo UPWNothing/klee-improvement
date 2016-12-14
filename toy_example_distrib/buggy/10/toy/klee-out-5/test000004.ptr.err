@@ -1,0 +1,29 @@
+Error: memory error: out of bound pointer
+File: /home/klee/toy_example_distrib/buggy/10/toy/toy.c
+Line: 54
+assembly.ll line: 182
+Stack: 
+	#000000182 in consume_record (ent) at /home/klee/toy_example_distrib/buggy/10/toy/toy.c:54
+	#100000287 in __user_main (argc=6, argv=60868992) at /home/klee/toy_example_distrib/buggy/10/toy/toy.c:80
+	#200000782 in __uClibc_main (argc=6, argv=60868992) at /home/klee/klee_build/klee-uclibc/libc/misc/internals/__uClibc_main.c:401
+	#300001193 in main (=6, =60868992)
+Info: 
+	address: (Add w64 55324944
+          (Mul w64 24
+                   (Select w64 (Or (Eq 1818326540
+                                       N0:(Or w32 (Or w32 (Or w32 (Shl w32 (ZExt w32 (Read w8 17 entry))
+                                                                           8)
+                                                                  (ZExt w32 (Read w8 16 entry)))
+                                                          (Shl w32 (ZExt w32 (Read w8 18 entry))
+                                                                   16))
+                                                  (Shl w32 (ZExt w32 (Read w8 19 entry))
+                                                           24)))
+                                   (Eq 209084780 N0))
+                               (ZExt w64 N0)
+                               0)))
+	example: 5073359664
+	range: [5073359664, 43695161904]
+	next: object at 140666865205376 of size 1536
+		MO31[1536] (no allocation info)
+	prev: object at 62828832 of size 6
+		MO83[6] allocated at global:.str9114

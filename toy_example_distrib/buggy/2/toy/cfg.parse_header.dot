@@ -1,0 +1,13 @@
+digraph "CFG for 'parse_header' function" {
+	label="CFG for 'parse_header' function";
+
+	Node0x53eda0 [shape=record,label="{%0:\l  %1 = alloca %struct._IO_FILE*, align 8\l  %2 = alloca %struct.file_header*, align 8\l  store %struct._IO_FILE* %f, %struct._IO_FILE** %1, align 8\l  call void @llvm.dbg.declare(metadata !\{%struct._IO_FILE** %1\}, metadata\l... !122), !dbg !123\l  store %struct.file_header* %hdr, %struct.file_header** %2, align 8\l  call void @llvm.dbg.declare(metadata !\{%struct.file_header** %2\}, metadata\l... !124), !dbg !123\l  %3 = load %struct.file_header** %2, align 8, !dbg !125\l  %4 = bitcast %struct.file_header* %3 to i8*, !dbg !125\l  %5 = load %struct._IO_FILE** %1, align 8, !dbg !125\l  %6 = call i64 @fread(i8* %4, i64 16, i64 1, %struct._IO_FILE* %5), !dbg !125\l  %7 = icmp ne i64 1, %6, !dbg !125\l  br i1 %7, label %8, label %9, !dbg !125\l|{<s0>T|<s1>F}}"];
+	Node0x53eda0:s0 -> Node0x53f9e0;
+	Node0x53eda0:s1 -> Node0x53fa80;
+	Node0x53f9e0 [shape=record,label="{%8:\l\l  call void @exit(i32 1) #5, !dbg !127\l  unreachable, !dbg !127\l}"];
+	Node0x53fa80 [shape=record,label="{%9:\l\l  %10 = load %struct.file_header** %2, align 8, !dbg !128\l  %11 = getelementptr inbounds %struct.file_header* %10, i32 0, i32 0, !dbg\l... !128\l  %12 = load i32* %11, align 1, !dbg !128\l  %13 = icmp ne i32 %12, 1279350337, !dbg !128\l  br i1 %13, label %14, label %15, !dbg !128\l|{<s0>T|<s1>F}}"];
+	Node0x53fa80:s0 -> Node0x5402c0;
+	Node0x53fa80:s1 -> Node0x540360;
+	Node0x5402c0 [shape=record,label="{%14:\l\l  call void @exit(i32 1) #5, !dbg !130\l  unreachable, !dbg !130\l}"];
+	Node0x540360 [shape=record,label="{%15:\l\l  ret void, !dbg !131\l}"];
+}

@@ -1,0 +1,2 @@
+KLEE: ERROR: /home/klee/toy_example_distrib/unmodified/toy/toy.c:63: memory error: invalid pointer: make_symbolic
+KLEE: NOTE: now ignoring this error at this location

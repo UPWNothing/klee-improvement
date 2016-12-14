@@ -1,0 +1,12 @@
+Error: memory error: out of bound pointer
+File: /home/klee/toy_example_distrib/buggy/2/Simple_test/test.c
+Line: 7
+assembly.ll line: 107
+Stack: 
+	#000000107 in __user_main (argc=6, argv=55189312) at /home/klee/toy_example_distrib/buggy/2/Simple_test/test.c:7
+	#100000260 in __uClibc_main (argc=6, argv=55189312) at /home/klee/klee_build/klee-uclibc/libc/misc/internals/__uClibc_main.c:401
+	#200000481 in main (=6, =55189312)
+Info: 
+	address: 0
+	next: object at 37387904 of size 8
+		MO55[8] allocated at global:__exe_fs.8

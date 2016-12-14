@@ -1,0 +1,8 @@
+Error: external call with symbolic argument: printf
+File: /home/klee/toy_example_distrib/buggy/2/toy/toy.c
+Line: 73
+assembly.ll line: 266
+Stack: 
+	#000000266 in __user_main (argc=6, argv=60643456) at /home/klee/toy_example_distrib/buggy/2/toy/toy.c:73
+	#100000768 in __uClibc_main (argc=6, argv=60643456) at /home/klee/klee_build/klee-uclibc/libc/misc/internals/__uClibc_main.c:401
+	#200001179 in main (=6, =60643456)

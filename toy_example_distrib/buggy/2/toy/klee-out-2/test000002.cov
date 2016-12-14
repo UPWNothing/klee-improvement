@@ -1,0 +1,12 @@
+/home/klee/toy_example_distrib/buggy/2/toy/toy.c:46
+/home/klee/toy_example_distrib/buggy/2/toy/toy.c:47
+/home/klee/toy_example_distrib/buggy/2/toy/toy.c:49
+/home/klee/toy_example_distrib/buggy/2/toy/toy.c:53
+/home/klee/toy_example_distrib/buggy/2/toy/toy.c:54
+/home/klee/toy_example_distrib/buggy/2/toy/toy.c:55
+/home/klee/toy_example_distrib/buggy/2/toy/toy.c:56
+/home/klee/toy_example_distrib/buggy/2/toy/toy.c:81
+/home/klee/toy_example_distrib/buggy/2/toy/toy.c:82
+/home/klee/toy_example_distrib/buggy/2/toy/toy.c:83
+/home/klee/toy_example_distrib/buggy/2/toy/toy.c:84
+/home/klee/klee_build/klee-uclibc/libc/stdio/fread.c:27

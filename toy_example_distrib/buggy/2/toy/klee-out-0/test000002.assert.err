@@ -1,0 +1,9 @@
+Error: ASSERTION FAIL: 0
+File: /home/klee/toy_example_distrib/buggy/2/toy/toy.c
+Line: 56
+assembly.ll line: 194
+Stack: 
+	#000000194 in consume_record (ent=62103584) at /home/klee/toy_example_distrib/buggy/2/toy/toy.c:56
+	#100000294 in __user_main (argc=6, argv=70679744) at /home/klee/toy_example_distrib/buggy/2/toy/toy.c:84
+	#200000789 in __uClibc_main (argc=6, argv=70679744) at /home/klee/klee_build/klee-uclibc/libc/misc/internals/__uClibc_main.c:401
+	#300001200 in main (=6, =70679744)

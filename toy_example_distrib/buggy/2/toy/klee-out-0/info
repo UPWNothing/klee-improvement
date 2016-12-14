@@ -1,0 +1,23 @@
+klee -debug-print-instructions=all:file --simplify-sym-indices --write-cvcs --write-cov --output-module --disable-inlining --optimize --use-forked-solver --use-cex-cache --libc=uclibc --posix-runtime --allow-external-sym-calls --only-output-states-covering-new --max-sym-array-size=4096 --max-instruction-time=30. --max-time=18000. --watchdog --max-memory-inhibit=false --max-static-fork-pct=1 --max-static-solve-pct=1 --max-static-cpfork-pct=1 --switch-type=internal --search=random-path --search=nurs:covnew --use-batching-search --batch-instructions=10000 ./toy.bc A --sym-files 1 128 --sym-stdout
+PID: 1185
+Started: 2016-12-05 21:28:22
+BEGIN searcher description
+<BatchingSearcher> timeBudget: 5.000000e+00, instructionBudget: 10000, baseSearcher:
+<InterleavedSearcher> containing 2 searchers:
+RandomPathSearcher
+WeightedRandomSearcher::CoveringNew
+</InterleavedSearcher>
+</BatchingSearcher>
+END searcher description
+Finished: 2016-12-05 21:28:40
+Elapsed: 00:00:18
+KLEE: done: explored paths = 30
+KLEE: done: avg. constructs per query = 84
+KLEE: done: total queries = 26
+KLEE: done: valid queries = 1
+KLEE: done: invalid queries = 25
+KLEE: done: query cex = 26
+
+KLEE: done: total instructions = 12890
+KLEE: done: completed paths = 30
+KLEE: done: generated tests = 9

@@ -1,0 +1,7 @@
+Error: failed external call: fread
+File: /home/klee/toy_example_distrib/unmodified/toy/toy.c
+Line: 32
+assembly.ll line: 36
+Stack: 
+	#000000036 in parse_header (f=0, hdr=28768032) at /home/klee/toy_example_distrib/unmodified/toy/toy.c:32
+	#100000168 in main (argc=3, argv=28933264) at /home/klee/toy_example_distrib/unmodified/toy/toy.c:64

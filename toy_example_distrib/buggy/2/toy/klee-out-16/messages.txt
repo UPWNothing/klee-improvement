@@ -1,0 +1,4 @@
+KLEE: Logging all queries in .kquery format to /home/klee/toy_example_distrib/buggy/2/toy/./klee-out-16/all-queries.kquery
+
+KLEE: ERROR: /home/klee/toy_example_distrib/buggy/2/toy/toy_test.c:67: memory error: out of bound pointer
+KLEE: NOTE: now ignoring this error at this location

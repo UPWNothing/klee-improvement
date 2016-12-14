@@ -1,0 +1,2 @@
+KLEE: ERROR: /home/klee/toy_example_distrib/unmodified/toy/toy.c:31: failed external call: fread
+KLEE: NOTE: now ignoring this error at this location
