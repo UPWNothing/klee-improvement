@@ -1,4 +1,0 @@
-KLEE: ERROR: /home/klee/klee_src/test/Feature/OvershiftCheck.c:20: overshift error
-KLEE: NOTE: now ignoring this error at this location
-KLEE: ERROR: /home/klee/klee_src/test/Feature/OvershiftCheck.c:24: overshift error
-KLEE: NOTE: now ignoring this error at this location

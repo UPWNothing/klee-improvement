@@ -1,5 +1,0 @@
-KLEE: WARNING: undefined reference to function: __errno_location
-KLEE: WARNING: undefined reference to function: klee_posix_prefer_cex
-KLEE: WARNING: undefined reference to function: printf
-KLEE: WARNING ONCE: calling external: syscall(4, 32231632, 32330144)
-KLEE: WARNING ONCE: calling external: printf(29079648)

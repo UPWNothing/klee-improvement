@@ -1,3 +1,0 @@
-KLEE: WARNING: undefined reference to function: printf
-KLEE: WARNING ONCE: flushing 8192 bytes on read, may be slow and/or crash: MO22[8192] allocated at main():  %a = alloca [8192 x i8], align 16
-KLEE: WARNING ONCE: calling external: printf(45264560)

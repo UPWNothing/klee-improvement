@@ -1,1 +1,0 @@
-/usr/bin/c++    -std=gnu++98 -Wall -Wextra -Wno-unused-parameter -O2 -g    CMakeFiles/ExprTest.dir/ExprTest.cpp.o  -o ../ExprTest -rdynamic ../../lib/libgtest_main.a ../../lib/libkleaverExpr.a ../../lib/libgtest.a -lz /usr/lib/llvm-3.4/lib/libLLVMSupport.a -L/usr/lib/llvm-3.4/lib -lffi -ltinfo -ldl -lm -lffi -ltinfo -ldl -lm -lpthread 

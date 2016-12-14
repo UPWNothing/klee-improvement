@@ -1,2 +1,0 @@
-KLEE: ERROR: /home/klee/klee_src/test/Feature/KleeReportError.c:23: My error
-KLEE: ERROR: /home/klee/klee_src/test/Feature/KleeReportError.c:23: My error

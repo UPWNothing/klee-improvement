@@ -1,2 +1,0 @@
-KLEE: ERROR: /home/klee/klee_src/test/Feature/OneOutOfBounds.c:10: memory error: out of bound pointer
-KLEE: NOTE: now ignoring this error at this location

@@ -1,6 +1,0 @@
-KLEE: ERROR: /home/klee/klee_src/test/Runtime/POSIX/FreeArgv.c:13: free of global
-KLEE: NOTE: now ignoring this error at this location
-KLEE: ERROR: /home/klee/klee_src/test/Runtime/POSIX/FreeArgv.c:17: free of global
-KLEE: NOTE: now ignoring this error at this location
-KLEE: ERROR: /home/klee/klee_src/test/Runtime/POSIX/FreeArgv.c:21: free of global
-KLEE: NOTE: now ignoring this error at this location

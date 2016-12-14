@@ -1,4 +1,0 @@
-KLEE: Logging all queries in .kquery format to /home/klee/klee_build/klee/test/Feature/Output/CompressedExprLogging.c.tmp.klee-out2/all-queries.kquery
-
-KLEE: ERROR: /home/klee/klee_src/test/Feature/CompressedExprLogging.c:39: ASSERTION FAIL: 0
-KLEE: NOTE: now ignoring this error at this location

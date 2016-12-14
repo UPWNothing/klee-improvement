@@ -1,2 +1,0 @@
-KLEE: ERROR: /home/klee/klee_src/test/CXX/StaticDestructor.cpp:17: memory error: out of bound pointer
-KLEE: NOTE: now ignoring this error at this location

@@ -1,4 +1,0 @@
-KLEE: ERROR: /home/klee/klee_src/test/Feature/CheckMemoryAccess.c:17: check_memory_access: memory error
-KLEE: NOTE: now ignoring this error at this location
-KLEE: ERROR: /home/klee/klee_src/test/Feature/CheckMemoryAccess.c:22: check_memory_access: memory error
-KLEE: NOTE: now ignoring this error at this location
