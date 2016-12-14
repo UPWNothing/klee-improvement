@@ -1,0 +1,2 @@
+KLEE: ERROR: /home/klee/klee_src/test/regression/2016-08-06-klee-get-obj-size.c:12: ASSERTION FAIL: 5 != klee_get_obj_size(s)
+KLEE: NOTE: now ignoring this error at this location

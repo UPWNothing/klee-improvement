@@ -1,2 +1,0 @@
-KLEE: ERROR: /home/klee/toy_example_distrib/buggy/10/toy/toy.c:53: failed external call: printf
-KLEE: ERROR: /home/klee/toy_example_distrib/buggy/10/toy/toy.c:53: external call with symbolic argument: printf

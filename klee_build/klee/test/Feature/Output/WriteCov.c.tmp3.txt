@@ -1,0 +1,4 @@
+/home/klee/klee_build/klee/test/Feature/Output/WriteCov.c.tmp.klee-out/test000001.cov:0
+/home/klee/klee_build/klee/test/Feature/Output/WriteCov.c.tmp.klee-out/test000002.cov:1
+/home/klee/klee_build/klee/test/Feature/Output/WriteCov.c.tmp.klee-out/test000001.cov:1
+/home/klee/klee_build/klee/test/Feature/Output/WriteCov.c.tmp.klee-out/test000002.cov:0

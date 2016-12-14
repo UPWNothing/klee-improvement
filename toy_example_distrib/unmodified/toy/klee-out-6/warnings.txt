@@ -1,7 +1,0 @@
-KLEE: WARNING: undefined reference to function: fopen
-KLEE: WARNING: undefined reference to function: fread
-KLEE: WARNING: undefined reference to function: printf
-KLEE: WARNING ONCE: calling external: fopen(53672640, 53601616)
-KLEE: WARNING ONCE: calling external: fread(53648592, 16, 1, 54111968)
-KLEE: WARNING ONCE: calling external: printf(53602224, 1468011929)
-KLEE: WARNING ONCE: silently concretizing (reason: floating point) expression (ReadLSB w32 20 entry) to value 0 (/home/klee/toy_example_distrib/unmodified/toy/toy.c:48)

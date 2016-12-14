@@ -1,7 +1,0 @@
-Error: failed external call: printf
-File: /home/klee/toy_example_distrib/buggy/10/toy/toy.c
-Line: 53
-assembly.ll line: 128
-Stack: 
-	#000000128 in consume_record (ent) at /home/klee/toy_example_distrib/buggy/10/toy/toy.c:53
-	#100000294 in main (argc=2, argv=22605744) at /home/klee/toy_example_distrib/buggy/10/toy/toy.c:80

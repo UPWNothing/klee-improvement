@@ -1,0 +1,2 @@
+KLEE: ERROR: /home/klee/klee_src/test/regression/2007-10-11-free-of-alloca.c:9: free of alloca
+KLEE: NOTE: now ignoring this error at this location

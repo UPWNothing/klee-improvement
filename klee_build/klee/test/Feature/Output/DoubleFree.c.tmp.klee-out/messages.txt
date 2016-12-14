@@ -1,0 +1,2 @@
+KLEE: ERROR: (location information missing) memory error: invalid pointer: free
+KLEE: NOTE: now ignoring this error at this location

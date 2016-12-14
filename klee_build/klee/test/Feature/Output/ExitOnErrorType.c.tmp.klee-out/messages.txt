@@ -1,0 +1,3 @@
+KLEE: ERROR: /home/klee/klee_src/test/Feature/ExitOnErrorType.c:9: ASSERTION FAIL: klee_int("assert")
+KLEE: NOTE: now ignoring this error at this location
+KLEE: halting execution, dumping remaining states

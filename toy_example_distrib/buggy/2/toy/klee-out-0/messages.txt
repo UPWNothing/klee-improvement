@@ -1,2 +1,0 @@
-KLEE: ERROR: /home/klee/toy_example_distrib/buggy/2/toy/toy.c:56: ASSERTION FAIL: 0
-KLEE: NOTE: now ignoring this error at this location

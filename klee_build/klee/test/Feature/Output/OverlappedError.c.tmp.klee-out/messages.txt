@@ -1,0 +1,4 @@
+KLEE: ERROR: /home/klee/klee_src/test/Feature/OverlappedError.c:16: memory error: out of bound pointer
+KLEE: NOTE: now ignoring this error at this location
+KLEE: ERROR: /home/klee/klee_src/test/Feature/OverlappedError.c:12: memory error: out of bound pointer
+KLEE: NOTE: now ignoring this error at this location

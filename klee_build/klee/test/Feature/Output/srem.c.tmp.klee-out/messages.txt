@@ -1,0 +1,4 @@
+KLEE: ERROR: /home/klee/klee_src/test/Feature/srem.c:19: divide by zero
+KLEE: NOTE: now ignoring this error at this location
+KLEE: ERROR: /home/klee/klee_src/test/Feature/srem.c:32: ASSERTION FAIL: -1 % y == -1
+KLEE: NOTE: now ignoring this error at this location

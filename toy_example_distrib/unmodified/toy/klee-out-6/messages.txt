@@ -1,4 +1,0 @@
-KLEE: ERROR: /home/klee/toy_example_distrib/unmodified/toy/toy.c:54: external call with symbolic argument: printf
-KLEE: NOTE: now ignoring this error at this location
-KLEE: ERROR: /home/klee/toy_example_distrib/unmodified/toy/toy.c:51: external call with symbolic argument: printf
-KLEE: NOTE: now ignoring this error at this location

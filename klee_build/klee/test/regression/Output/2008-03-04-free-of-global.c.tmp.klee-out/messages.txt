@@ -1,0 +1,2 @@
+KLEE: ERROR: /home/klee/klee_src/test/regression/2008-03-04-free-of-global.c:10: free of global
+KLEE: NOTE: now ignoring this error at this location

@@ -1,5 +1,0 @@
-KLEE: WARNING: undefined reference to function: fopen
-KLEE: WARNING: undefined reference to function: fread
-KLEE: WARNING: undefined reference to function: printf
-KLEE: WARNING ONCE: calling external: fopen(0, 54517552)
-KLEE: WARNING ONCE: calling external: fread(54564208, 16, 1, 0)

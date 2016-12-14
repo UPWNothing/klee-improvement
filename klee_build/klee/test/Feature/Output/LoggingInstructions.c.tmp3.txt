@@ -1,0 +1,29 @@
+KLEE: output directory is "/home/klee/klee_build/klee/test/Feature/Output/LoggingInstructions.c.tmp.klee-out"
+Using STP solver backend
+KLEE: WARNING: undefined reference to function: printf
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:27:0:  %1 = alloca i32, align 4
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:27:1:  %k = alloca i32, align 4
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:27:2:  store i32 0, i32* %1
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:27:3:  %2 = bitcast i32* %k to i8*, !dbg !125
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:27:4:  call void @klee_make_symbolic(i8* %2, i64 4, i8* getelementptr inbounds ([2 x i8]* @.str, i32 0, i32 0)), !dbg !125
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:28:5:  %3 = load i32* %k, align 4, !dbg !126
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:28:6:  %4 = icmp ult i32 %3, 5, !dbg !126
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:28:7:  %5 = zext i1 %4 to i32, !dbg !126
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:28:8:  %6 = sext i32 %5 to i64, !dbg !126
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:28:9:  call void @klee_assume(i64 %6), !dbg !126
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:30:10:  %7 = load i32* %k, align 4, !dbg !127
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:30:11:  %8 = zext i32 %7 to i64, !dbg !127
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:30:12:  %9 = getelementptr inbounds [5 x i8]* @array, i32 0, i64 %8, !dbg !127
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:30:13:  %10 = load i8* %9, align 1, !dbg !127
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:30:14:  %11 = sext i8 %10 to i32, !dbg !127
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:30:15:  %12 = icmp eq i32 %11, -4, !dbg !127
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:30:16:  br i1 %12, label %13, label %15, !dbg !127
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:46:19:  ret i32 0, !dbg !130
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:31:17:  %14 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([5 x i8]* @.str1, i32 0, i32 0)), !dbg !129
+KLEE: WARNING ONCE: calling external: printf(27968160)
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:31:18:  br label %15, !dbg !129
+     /home/klee/klee_src/test/Feature/LoggingInstructions.c:46:19:  ret i32 0, !dbg !130
+
+KLEE: done: total instructions = 21
+KLEE: done: completed paths = 2
+KLEE: done: generated tests = 2

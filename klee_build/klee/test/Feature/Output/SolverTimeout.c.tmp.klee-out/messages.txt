@@ -1,0 +1,2 @@
+KLEE: ERROR: (location information missing) divide by zero
+KLEE: NOTE: now ignoring this error at this location
