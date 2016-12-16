@@ -1261,12 +1261,12 @@ void Executor::executeCall(ExecutionState &state,
       int i=0;
       //ExecutionState tmpState = ExecutionState(state);
       if (strcmp(f->getName().str().c_str(),"printf") == 0) {
-        klee_warning("JUST FOR TEST: printf found!");
-	for (std::vector< ref<Expr> >::iterator
-              	ai = arguments.begin(), ie = arguments.end();
-		 ai != ie; ++ai) {
+        //klee_warning("JUST FOR TEST: printf found!");
+	//for (std::vector< ref<Expr> >::iterator
+        //      	ai = arguments.begin(), ie = arguments.end();
+	//	 ai != ie; ++ai) {
 	  //Expr::Width to, from = (*ai)->getWidth();
-	  klee_warning("Checking Arguments[%d]!",i);
+	//  klee_warning("Checking Arguments[%d]!",i);
 
 
           /**
@@ -1278,8 +1278,8 @@ void Executor::executeCall(ExecutionState &state,
           // ****************************** arguments[i] will lead to an error *********** 
           executeMemoryOperation(state, false, arguments[0], 0, ki);
           // *****************************************************************************
-	  i++; 
-	}
+	//  i++; 
+	//}
       }
 	// state may be destroyed by this call, cannot touch
 	callExternalFunction(state, ki, f, arguments);
@@ -3794,6 +3794,7 @@ int Executor::checkParametersBounds(ExecutionState &state,
   bool success;
   solver->setTimeout(coreSolverTimeout);
   if (!state.addressSpace.resolveOne(state, solver, address, op, success)) {
+    klee_warning("resolveOne failure!!");
     address = toConstant(state, address, "resolveOne failure");
     success = state.addressSpace.resolveOne(cast<ConstantExpr>(address), op);
   }

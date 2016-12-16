@@ -1,0 +1,186 @@
+A-data-stat0  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+stdout-stat1  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+model_version2  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+A-data3  : ARRAY BITVECTOR(32) OF BITVECTOR(8);
+%----------------------------------------------------
+ASSERT( ( NOT( (0b0000000000000000000000000000000 = (A-data-stat0[0x0000000B] @ (A-data-stat0[0x0000000A] @ (A-data-stat0[0x00000009] @ A-data-stat0[0x00000008]
+)
+)
+)[30:0]
+))) );
+ASSERT( BVGT(0x0000000000010000,(A-data-stat0[0x0000003F] @ (A-data-stat0[0x0000003E] @ (A-data-stat0[0x0000003D] @ (A-data-stat0[0x0000003C] @ (A-data-stat0[0x0000003B] @ (A-data-stat0[0x0000003A] @ (A-data-stat0[0x00000039] @ A-data-stat0[0x00000038]
+)
+)
+)
+)
+)
+)
+))
+ );
+ASSERT( ( NOT( (0b0000000000000000000000000000000 = (stdout-stat1[0x0000000B] @ (stdout-stat1[0x0000000A] @ (stdout-stat1[0x00000009] @ stdout-stat1[0x00000008]
+)
+)
+)[30:0]
+))) );
+ASSERT( BVGT(0x0000000000010000,(stdout-stat1[0x0000003F] @ (stdout-stat1[0x0000003E] @ (stdout-stat1[0x0000003D] @ (stdout-stat1[0x0000003C] @ (stdout-stat1[0x0000003B] @ (stdout-stat1[0x0000003A] @ (stdout-stat1[0x00000039] @ stdout-stat1[0x00000038]
+)
+)
+)
+)
+)
+)
+))
+ );
+ASSERT( ((((0x01 = model_version2[0x00000000]
+) AND (0x00 = model_version2[0x00000001]
+)
+) AND (0x00 = model_version2[0x00000002]
+)
+) AND (0x00 = model_version2[0x00000003]
+)
+) );
+ASSERT( (0x2 = A-data-stat0[0x00000019][7:4]
+) );
+ASSERT( ((((0x41 = A-data3[0x00000000]
+) AND (0x56 = A-data3[0x00000001]
+)
+) AND (0x41 = A-data3[0x00000002]
+)
+) AND (0x4C = A-data3[0x00000003]
+)
+) );
+ASSERT( ( NOT( ((0x00 = A-data3[0x00000008]
+) AND (0x00 = A-data3[0x00000009]
+)
+))) );
+ASSERT( ((((0x01 = A-data3[0x00000020]
+) AND (0x00 = A-data3[0x00000021]
+)
+) AND (0x00 = A-data3[0x00000022]
+)
+) AND (0x00 = A-data3[0x00000023]
+)
+) );
+ASSERT( ((((0x00 = A-data3[0x00000024]
+) AND (0x00 = A-data3[0x00000025]
+)
+) AND (0x00 = A-data3[0x00000026]
+)
+) AND (0x00 = A-data3[0x00000027]
+)
+) );
+ASSERT( (LET let_k_0 = (((((0x000000 @ A-data3[0x00000011]
+)[23:0] @ 0x00
+) | (0x000000 @ A-data3[0x00000010]
+)
+) | ((0x000000 @ A-data3[0x00000012]
+)[15:0] @ 0x0000
+)
+) | (A-data3[0x00000013] @ 0x000000
+)
+) IN 
+BVGT(0x0000000000000009,IF(((0x6C6175DE = let_k_0
+) OR (0xDE75616C = let_k_0
+)
+))
+THEN (0x00000000 @ let_k_0
+)
+ELSE 0x0000000000000000
+ENDIF)
+)  );
+ASSERT( BVGT((0x0000 @ (A-data3[0x00000009] @ A-data3[0x00000008]
+)
+),0x00000001)
+ );
+ASSERT( ((((0x02 = A-data3[0x00000038]
+) AND (0x00 = A-data3[0x00000039]
+)
+) AND (0x00 = A-data3[0x0000003A]
+)
+) AND (0x00 = A-data3[0x0000003B]
+)
+) );
+ASSERT( BVGT((0x0000 @ (A-data3[0x00000009] @ A-data3[0x00000008]
+)
+),0x00000002)
+ );
+ASSERT( ((((0x01 = A-data3[0x00000050]
+) AND (0x00 = A-data3[0x00000051]
+)
+) AND (0x00 = A-data3[0x00000052]
+)
+) AND (0x00 = A-data3[0x00000053]
+)
+) );
+ASSERT( ((((0x00 = A-data3[0x00000054]
+) AND (0x00 = A-data3[0x00000055]
+)
+) AND (0x00 = A-data3[0x00000056]
+)
+) AND (0x00 = A-data3[0x00000057]
+)
+) );
+ASSERT( (LET let_k_0 = (((((0x000000 @ A-data3[0x00000041]
+)[23:0] @ 0x00
+) | (0x000000 @ A-data3[0x00000040]
+)
+) | ((0x000000 @ A-data3[0x00000042]
+)[15:0] @ 0x0000
+)
+) | (A-data3[0x00000043] @ 0x000000
+)
+) IN 
+BVGT(0x0000000000000009,IF(((0x6C6175DE = let_k_0
+) OR (0xDE75616C = let_k_0
+)
+))
+THEN (0x00000000 @ let_k_0
+)
+ELSE 0x0000000000000000
+ENDIF)
+)  );
+ASSERT( BVGT((0x0000 @ (A-data3[0x00000009] @ A-data3[0x00000008]
+)
+),0x00000003)
+ );
+ASSERT( ((((0x01 = A-data3[0x00000068]
+) AND (0x00 = A-data3[0x00000069]
+)
+) AND (0x00 = A-data3[0x0000006A]
+)
+) AND (0x00 = A-data3[0x0000006B]
+)
+) );
+ASSERT( ((((0x00 = A-data3[0x0000006C]
+) AND (0x00 = A-data3[0x0000006D]
+)
+) AND (0x00 = A-data3[0x0000006E]
+)
+) AND (0x00 = A-data3[0x0000006F]
+)
+) );
+ASSERT( (LET let_k_0 = (((((0x000000 @ A-data3[0x00000059]
+)[23:0] @ 0x00
+) | (0x000000 @ A-data3[0x00000058]
+)
+) | ((0x000000 @ A-data3[0x0000005A]
+)[15:0] @ 0x0000
+)
+) | (A-data3[0x0000005B] @ 0x000000
+)
+) IN 
+BVGT(0x0000000000000009,IF(((0x6C6175DE = let_k_0
+) OR (0xDE75616C = let_k_0
+)
+))
+THEN (0x00000000 @ let_k_0
+)
+ELSE 0x0000000000000000
+ENDIF)
+)  );
+ASSERT( BVGT((0x0000 @ (A-data3[0x00000009] @ A-data3[0x00000008]
+)
+),0x00000004)
+ );
+%----------------------------------------------------
+QUERY( FALSE  );
