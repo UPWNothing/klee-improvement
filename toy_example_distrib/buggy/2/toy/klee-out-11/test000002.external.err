@@ -1,9 +1,0 @@
-Error: failed external call: printf
-File: /home/klee/toy_example_distrib/buggy/2/toy/test.c
-Line: 56
-assembly.ll line: 180
-Stack: 
-	#000000180 in consume_record (ent=71205376) at /home/klee/toy_example_distrib/buggy/2/toy/test.c:56
-	#100000237 in __user_main (argc=6, argv=53443712) at /home/klee/toy_example_distrib/buggy/2/toy/test.c:78
-	#200000730 in __uClibc_main (argc=6, argv=53443712) at /home/klee/klee_build/klee-uclibc/libc/misc/internals/__uClibc_main.c:401
-	#300001141 in main (=6, =53443712)

@@ -241,6 +241,11 @@ private:
                             llvm::Function *function,
                             std::vector< ref<Expr> > &arguments);
 
+
+  int checkParametersBounds(ExecutionState &state,
+                                      ref<Expr> address,
+                                      KInstruction *target );
+
   ObjectState *bindObjectInState(ExecutionState &state, const MemoryObject *mo,
                                  bool isLocal, const Array *array = 0);
 
@@ -507,6 +512,8 @@ public:
   Expr::Width getWidthForLLVMType(LLVM_TYPE_Q llvm::Type *type) const;
 };
   
-} // End klee namespace
+
+
+}  // End klee namespace
 
 #endif

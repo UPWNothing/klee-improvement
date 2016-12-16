@@ -10,14 +10,12 @@ target triple = "x86_64-pc-linux-gnu"
 
 @lava_val = internal global [1000000 x i32] zeroinitializer, align 16
 @.str = private unnamed_addr constant [18 x i8] c"Entry: bar = %s, \00", align 1
-@.str1 = private unnamed_addr constant [10 x i8] c"KLEE_TEST\00", align 1
-@.str2 = private unnamed_addr constant [13 x i8] c"lava_131:%d\0A\00", align 1
-@.str3 = private unnamed_addr constant [12 x i8] c"fdata = %f\0A\00", align 1
-@.str4 = private unnamed_addr constant [14 x i8] c"intdata = %u\0A\00", align 1
-@.str5 = private unnamed_addr constant [17 x i8] c"Unknown type %x\0A\00", align 1
-@.str6 = private unnamed_addr constant [3 x i8] c"rb\00", align 1
-@.str7 = private unnamed_addr constant [20 x i8] c"File timestamp: %u\0A\00", align 1
-@.str8 = private unnamed_addr constant [6 x i8] c"entry\00", align 1
+@.str1 = private unnamed_addr constant [12 x i8] c"fdata = %f\0A\00", align 1
+@.str2 = private unnamed_addr constant [14 x i8] c"intdata = %u\0A\00", align 1
+@.str3 = private unnamed_addr constant [17 x i8] c"Unknown type %x\0A\00", align 1
+@.str4 = private unnamed_addr constant [3 x i8] c"rb\00", align 1
+@.str5 = private unnamed_addr constant [20 x i8] c"File timestamp: %u\0A\00", align 1
+@.str6 = private unnamed_addr constant [6 x i8] c"entry\00", align 1
 
 ; Function Attrs: nounwind uwtable
 define void @lava_set(i32 %bug_num, i32 %val) #0 {
@@ -130,116 +128,112 @@ define void @consume_record(%struct.file_entry* %ent) #0 {
   %4 = getelementptr inbounds [16 x i8]* %3, i32 0, i32 0, !dbg !147
   %5 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([18 x i8]* @.str, i32 0, i32 0), i8* %4), !dbg !147
   %6 = load %struct.file_entry** %1, align 8, !dbg !148
-  call void (i8*, ...)* @klee_print_expr(i8* getelementptr inbounds ([10 x i8]* @.str1, i32 0, i32 0), %struct.file_entry* %6), !dbg !148
-  %7 = load %struct.file_entry** %1, align 8, !dbg !149
-  %8 = getelementptr inbounds %struct.file_entry* %7, i32 0, i32 1, !dbg !149
-  %9 = load i32* %8, align 1, !dbg !149
-  %10 = icmp eq i32 %9, 1, !dbg !149
-  br i1 %10, label %11, label %61, !dbg !149
+  %7 = getelementptr inbounds %struct.file_entry* %6, i32 0, i32 1, !dbg !148
+  %8 = load i32* %7, align 1, !dbg !148
+  %9 = icmp eq i32 %8, 1, !dbg !148
+  br i1 %9, label %10, label %60, !dbg !148
 
-; <label>:11                                      ; preds = %0
-  %12 = load %struct.file_entry** %1, align 8, !dbg !151
-  %13 = icmp ne %struct.file_entry* %12, null, !dbg !151
-  br i1 %13, label %14, label %51, !dbg !151
+; <label>:10                                      ; preds = %0
+  %11 = load %struct.file_entry** %1, align 8, !dbg !150
+  %12 = icmp ne %struct.file_entry* %11, null, !dbg !150
+  br i1 %12, label %13, label %50, !dbg !150
 
-; <label>:14                                      ; preds = %11
-  %15 = load %struct.file_entry** %1, align 8, !dbg !151
-  %16 = icmp ne %struct.file_entry* %15, null, !dbg !151
-  br i1 %16, label %17, label %51, !dbg !151
+; <label>:13                                      ; preds = %10
+  %14 = load %struct.file_entry** %1, align 8, !dbg !150
+  %15 = icmp ne %struct.file_entry* %14, null, !dbg !150
+  br i1 %15, label %16, label %50, !dbg !150
 
-; <label>:17                                      ; preds = %14
-  call void @llvm.dbg.declare(metadata !{i32* %lava_131}, metadata !155), !dbg !157
-  store i32 0, i32* %lava_131, align 4, !dbg !157
-  %18 = load %struct.file_entry** %1, align 8, !dbg !158
-  %19 = bitcast %struct.file_entry* %18 to i8*, !dbg !158
-  %20 = getelementptr inbounds i8* %19, i64 0, !dbg !158
-  %21 = load i8* %20, align 1, !dbg !158
-  %22 = zext i8 %21 to i32, !dbg !158
-  %23 = shl i32 %22, 0, !dbg !158
-  %24 = load i32* %lava_131, align 4, !dbg !158
-  %25 = or i32 %24, %23, !dbg !158
-  store i32 %25, i32* %lava_131, align 4, !dbg !158
-  %26 = load %struct.file_entry** %1, align 8, !dbg !159
-  %27 = bitcast %struct.file_entry* %26 to i8*, !dbg !159
-  %28 = getelementptr inbounds i8* %27, i64 1, !dbg !159
-  %29 = load i8* %28, align 1, !dbg !159
-  %30 = zext i8 %29 to i32, !dbg !159
-  %31 = shl i32 %30, 8, !dbg !159
-  %32 = load i32* %lava_131, align 4, !dbg !159
-  %33 = or i32 %32, %31, !dbg !159
-  store i32 %33, i32* %lava_131, align 4, !dbg !159
-  %34 = load %struct.file_entry** %1, align 8, !dbg !160
-  %35 = bitcast %struct.file_entry* %34 to i8*, !dbg !160
-  %36 = getelementptr inbounds i8* %35, i64 2, !dbg !160
-  %37 = load i8* %36, align 1, !dbg !160
-  %38 = zext i8 %37 to i32, !dbg !160
-  %39 = shl i32 %38, 16, !dbg !160
-  %40 = load i32* %lava_131, align 4, !dbg !160
-  %41 = or i32 %40, %39, !dbg !160
-  store i32 %41, i32* %lava_131, align 4, !dbg !160
-  %42 = load %struct.file_entry** %1, align 8, !dbg !161
-  %43 = bitcast %struct.file_entry* %42 to i8*, !dbg !161
-  %44 = getelementptr inbounds i8* %43, i64 3, !dbg !161
-  %45 = load i8* %44, align 1, !dbg !161
-  %46 = zext i8 %45 to i32, !dbg !161
-  %47 = shl i32 %46, 24, !dbg !161
-  %48 = load i32* %lava_131, align 4, !dbg !161
-  %49 = or i32 %48, %47, !dbg !161
-  store i32 %49, i32* %lava_131, align 4, !dbg !161
-  %50 = load i32* %lava_131, align 4, !dbg !162
-  call void @lava_set(i32 131, i32 %50), !dbg !162
-  br label %51, !dbg !163
+; <label>:16                                      ; preds = %13
+  call void @llvm.dbg.declare(metadata !{i32* %lava_131}, metadata !154), !dbg !156
+  store i32 0, i32* %lava_131, align 4, !dbg !156
+  %17 = load %struct.file_entry** %1, align 8, !dbg !157
+  %18 = bitcast %struct.file_entry* %17 to i8*, !dbg !157
+  %19 = getelementptr inbounds i8* %18, i64 0, !dbg !157
+  %20 = load i8* %19, align 1, !dbg !157
+  %21 = zext i8 %20 to i32, !dbg !157
+  %22 = shl i32 %21, 0, !dbg !157
+  %23 = load i32* %lava_131, align 4, !dbg !157
+  %24 = or i32 %23, %22, !dbg !157
+  store i32 %24, i32* %lava_131, align 4, !dbg !157
+  %25 = load %struct.file_entry** %1, align 8, !dbg !158
+  %26 = bitcast %struct.file_entry* %25 to i8*, !dbg !158
+  %27 = getelementptr inbounds i8* %26, i64 1, !dbg !158
+  %28 = load i8* %27, align 1, !dbg !158
+  %29 = zext i8 %28 to i32, !dbg !158
+  %30 = shl i32 %29, 8, !dbg !158
+  %31 = load i32* %lava_131, align 4, !dbg !158
+  %32 = or i32 %31, %30, !dbg !158
+  store i32 %32, i32* %lava_131, align 4, !dbg !158
+  %33 = load %struct.file_entry** %1, align 8, !dbg !159
+  %34 = bitcast %struct.file_entry* %33 to i8*, !dbg !159
+  %35 = getelementptr inbounds i8* %34, i64 2, !dbg !159
+  %36 = load i8* %35, align 1, !dbg !159
+  %37 = zext i8 %36 to i32, !dbg !159
+  %38 = shl i32 %37, 16, !dbg !159
+  %39 = load i32* %lava_131, align 4, !dbg !159
+  %40 = or i32 %39, %38, !dbg !159
+  store i32 %40, i32* %lava_131, align 4, !dbg !159
+  %41 = load %struct.file_entry** %1, align 8, !dbg !160
+  %42 = bitcast %struct.file_entry* %41 to i8*, !dbg !160
+  %43 = getelementptr inbounds i8* %42, i64 3, !dbg !160
+  %44 = load i8* %43, align 1, !dbg !160
+  %45 = zext i8 %44 to i32, !dbg !160
+  %46 = shl i32 %45, 24, !dbg !160
+  %47 = load i32* %lava_131, align 4, !dbg !160
+  %48 = or i32 %47, %46, !dbg !160
+  store i32 %48, i32* %lava_131, align 4, !dbg !160
+  %49 = load i32* %lava_131, align 4, !dbg !161
+  call void @lava_set(i32 131, i32 %49), !dbg !161
+  br label %50, !dbg !162
 
-; <label>:51                                      ; preds = %17, %14, %11
-  %52 = call i32 @lava_get(i32 131), !dbg !164
-  %53 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([13 x i8]* @.str2, i32 0, i32 0), i32 %52), !dbg !164
-  call void @llvm.dbg.declare(metadata !{i32* %kbcieiubweuhc1714636915}, metadata !165), !dbg !166
-  %54 = load %struct.file_entry** %1, align 8, !dbg !166
-  %55 = getelementptr inbounds %struct.file_entry* %54, i64 100000000000, !dbg !166
-  %56 = getelementptr inbounds %struct.file_entry* %55, i32 0, i32 2, !dbg !166
-  %57 = bitcast %union.anon* %56 to float*, !dbg !166
-  %58 = load float* %57, align 1, !dbg !166
-  %59 = fpext float %58 to double, !dbg !166
-  %60 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds (i8* getelementptr inbounds ([12 x i8]* @.str3, i32 0, i32 0), i64 10000000000000000), double %59), !dbg !166
-  store i32 %60, i32* %kbcieiubweuhc1714636915, align 4, !dbg !166
-  br label %78, !dbg !167
+; <label>:50                                      ; preds = %16, %13, %10
+  call void @llvm.dbg.declare(metadata !{i32* %kbcieiubweuhc1714636915}, metadata !163), !dbg !164
+  %51 = call i32 @lava_get(i32 131), !dbg !164
+  %52 = zext i32 %51 to i64, !dbg !164
+  %53 = getelementptr inbounds i8* getelementptr inbounds ([12 x i8]* @.str1, i32 0, i32 0), i64 %52, !dbg !164
+  %54 = load %struct.file_entry** %1, align 8, !dbg !164
+  %55 = getelementptr inbounds %struct.file_entry* %54, i32 0, i32 2, !dbg !164
+  %56 = bitcast %union.anon* %55 to float*, !dbg !164
+  %57 = load float* %56, align 1, !dbg !164
+  %58 = fpext float %57 to double, !dbg !164
+  %59 = call i32 (i8*, ...)* @printf(i8* %53, double %58), !dbg !164
+  store i32 %59, i32* %kbcieiubweuhc1714636915, align 4, !dbg !164
+  br label %77, !dbg !165
 
-; <label>:61                                      ; preds = %0
-  %62 = load %struct.file_entry** %1, align 8, !dbg !168
-  %63 = getelementptr inbounds %struct.file_entry* %62, i32 0, i32 1, !dbg !168
-  %64 = load i32* %63, align 1, !dbg !168
-  %65 = icmp eq i32 %64, 2, !dbg !168
-  br i1 %65, label %66, label %72, !dbg !168
+; <label>:60                                      ; preds = %0
+  %61 = load %struct.file_entry** %1, align 8, !dbg !166
+  %62 = getelementptr inbounds %struct.file_entry* %61, i32 0, i32 1, !dbg !166
+  %63 = load i32* %62, align 1, !dbg !166
+  %64 = icmp eq i32 %63, 2, !dbg !166
+  br i1 %64, label %65, label %71, !dbg !166
 
-; <label>:66                                      ; preds = %61
-  %67 = load %struct.file_entry** %1, align 8, !dbg !170
-  %68 = getelementptr inbounds %struct.file_entry* %67, i32 0, i32 2, !dbg !170
-  %69 = bitcast %union.anon* %68 to i32*, !dbg !170
-  %70 = load i32* %69, align 1, !dbg !170
-  %71 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([14 x i8]* @.str4, i32 0, i32 0), i32 %70), !dbg !170
-  br label %77, !dbg !172
+; <label>:65                                      ; preds = %60
+  %66 = load %struct.file_entry** %1, align 8, !dbg !168
+  %67 = getelementptr inbounds %struct.file_entry* %66, i32 0, i32 2, !dbg !168
+  %68 = bitcast %union.anon* %67 to i32*, !dbg !168
+  %69 = load i32* %68, align 1, !dbg !168
+  %70 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([14 x i8]* @.str2, i32 0, i32 0), i32 %69), !dbg !168
+  br label %76, !dbg !170
 
-; <label>:72                                      ; preds = %61
-  %73 = load %struct.file_entry** %1, align 8, !dbg !173
-  %74 = getelementptr inbounds %struct.file_entry* %73, i32 0, i32 1, !dbg !173
-  %75 = load i32* %74, align 1, !dbg !173
-  %76 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([17 x i8]* @.str5, i32 0, i32 0), i32 %75), !dbg !173
-  call void @exit(i32 1) #5, !dbg !175
-  unreachable, !dbg !175
+; <label>:71                                      ; preds = %60
+  %72 = load %struct.file_entry** %1, align 8, !dbg !171
+  %73 = getelementptr inbounds %struct.file_entry* %72, i32 0, i32 1, !dbg !171
+  %74 = load i32* %73, align 1, !dbg !171
+  %75 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([17 x i8]* @.str3, i32 0, i32 0), i32 %74), !dbg !171
+  call void @exit(i32 1) #5, !dbg !173
+  unreachable, !dbg !173
 
-; <label>:77                                      ; preds = %66
-  br label %78
+; <label>:76                                      ; preds = %65
+  br label %77
 
-; <label>:78                                      ; preds = %77, %51
-  %79 = load %struct.file_entry** %1, align 8, !dbg !176
-  %80 = bitcast %struct.file_entry* %79 to i8*, !dbg !176
-  call void @free(i8* %80) #6, !dbg !176
-  ret void, !dbg !177
+; <label>:77                                      ; preds = %76, %50
+  %78 = load %struct.file_entry** %1, align 8, !dbg !174
+  %79 = bitcast %struct.file_entry* %78 to i8*, !dbg !174
+  call void @free(i8* %79) #6, !dbg !174
+  ret void, !dbg !175
 }
 
 declare i32 @printf(i8*, ...) #2
-
-declare void @klee_print_expr(i8*, ...) #2
 
 ; Function Attrs: nounwind
 declare void @free(i8*) #4
@@ -255,53 +249,53 @@ define i32 @main(i32 %argc, i8** %argv) #0 {
   %ent = alloca %struct.file_entry*, align 8
   store i32 0, i32* %1
   store i32 %argc, i32* %2, align 4
-  call void @llvm.dbg.declare(metadata !{i32* %2}, metadata !178), !dbg !179
+  call void @llvm.dbg.declare(metadata !{i32* %2}, metadata !176), !dbg !177
   store i8** %argv, i8*** %3, align 8
-  call void @llvm.dbg.declare(metadata !{i8*** %3}, metadata !180), !dbg !179
-  call void @llvm.dbg.declare(metadata !{%struct._IO_FILE** %f}, metadata !181), !dbg !182
-  %4 = load i8*** %3, align 8, !dbg !182
-  %5 = getelementptr inbounds i8** %4, i64 1, !dbg !182
-  %6 = load i8** %5, align 8, !dbg !182
-  %7 = call %struct._IO_FILE* @fopen(i8* %6, i8* getelementptr inbounds ([3 x i8]* @.str6, i32 0, i32 0)), !dbg !182
-  store %struct._IO_FILE* %7, %struct._IO_FILE** %f, align 8, !dbg !182
-  call void @llvm.dbg.declare(metadata !{%struct.file_header* %head}, metadata !183), !dbg !184
-  %8 = load %struct._IO_FILE** %f, align 8, !dbg !185
-  call void @parse_header(%struct._IO_FILE* %8, %struct.file_header* %head), !dbg !185
-  %9 = getelementptr inbounds %struct.file_header* %head, i32 0, i32 4, !dbg !186
-  %10 = load i32* %9, align 1, !dbg !186
-  %11 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([20 x i8]* @.str7, i32 0, i32 0), i32 %10), !dbg !186
-  call void @llvm.dbg.declare(metadata !{i32* %i}, metadata !187), !dbg !188
-  store i32 0, i32* %i, align 4, !dbg !189
-  br label %12, !dbg !189
+  call void @llvm.dbg.declare(metadata !{i8*** %3}, metadata !178), !dbg !177
+  call void @llvm.dbg.declare(metadata !{%struct._IO_FILE** %f}, metadata !179), !dbg !180
+  %4 = load i8*** %3, align 8, !dbg !180
+  %5 = getelementptr inbounds i8** %4, i64 1, !dbg !180
+  %6 = load i8** %5, align 8, !dbg !180
+  %7 = call %struct._IO_FILE* @fopen(i8* %6, i8* getelementptr inbounds ([3 x i8]* @.str4, i32 0, i32 0)), !dbg !180
+  store %struct._IO_FILE* %7, %struct._IO_FILE** %f, align 8, !dbg !180
+  call void @llvm.dbg.declare(metadata !{%struct.file_header* %head}, metadata !181), !dbg !182
+  %8 = load %struct._IO_FILE** %f, align 8, !dbg !183
+  call void @parse_header(%struct._IO_FILE* %8, %struct.file_header* %head), !dbg !183
+  %9 = getelementptr inbounds %struct.file_header* %head, i32 0, i32 4, !dbg !184
+  %10 = load i32* %9, align 1, !dbg !184
+  %11 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([20 x i8]* @.str5, i32 0, i32 0), i32 %10), !dbg !184
+  call void @llvm.dbg.declare(metadata !{i32* %i}, metadata !185), !dbg !186
+  store i32 0, i32* %i, align 4, !dbg !187
+  br label %12, !dbg !187
 
 ; <label>:12                                      ; preds = %24, %0
-  %13 = load i32* %i, align 4, !dbg !189
-  %14 = getelementptr inbounds %struct.file_header* %head, i32 0, i32 2, !dbg !189
-  %15 = load i16* %14, align 1, !dbg !189
-  %16 = zext i16 %15 to i32, !dbg !189
-  %17 = icmp ult i32 %13, %16, !dbg !189
-  br i1 %17, label %18, label %27, !dbg !189
+  %13 = load i32* %i, align 4, !dbg !187
+  %14 = getelementptr inbounds %struct.file_header* %head, i32 0, i32 2, !dbg !187
+  %15 = load i16* %14, align 1, !dbg !187
+  %16 = zext i16 %15 to i32, !dbg !187
+  %17 = icmp ult i32 %13, %16, !dbg !187
+  br i1 %17, label %18, label %27, !dbg !187
 
 ; <label>:18                                      ; preds = %12
-  call void @llvm.dbg.declare(metadata !{%struct.file_entry** %ent}, metadata !191), !dbg !193
-  %19 = load %struct._IO_FILE** %f, align 8, !dbg !193
-  %20 = call %struct.file_entry* @parse_record(%struct._IO_FILE* %19), !dbg !193
-  store %struct.file_entry* %20, %struct.file_entry** %ent, align 8, !dbg !193
-  %21 = load %struct.file_entry** %ent, align 8, !dbg !194
-  %22 = bitcast %struct.file_entry* %21 to i8*, !dbg !194
-  call void @klee_make_symbolic(i8* %22, i64 24, i8* getelementptr inbounds ([6 x i8]* @.str8, i32 0, i32 0)), !dbg !194
-  %23 = load %struct.file_entry** %ent, align 8, !dbg !195
-  call void @consume_record(%struct.file_entry* %23), !dbg !195
-  br label %24, !dbg !196
+  call void @llvm.dbg.declare(metadata !{%struct.file_entry** %ent}, metadata !189), !dbg !191
+  %19 = load %struct._IO_FILE** %f, align 8, !dbg !191
+  %20 = call %struct.file_entry* @parse_record(%struct._IO_FILE* %19), !dbg !191
+  store %struct.file_entry* %20, %struct.file_entry** %ent, align 8, !dbg !191
+  %21 = load %struct.file_entry** %ent, align 8, !dbg !192
+  %22 = bitcast %struct.file_entry* %21 to i8*, !dbg !192
+  call void @klee_make_symbolic(i8* %22, i64 24, i8* getelementptr inbounds ([6 x i8]* @.str6, i32 0, i32 0)), !dbg !192
+  %23 = load %struct.file_entry** %ent, align 8, !dbg !193
+  call void @consume_record(%struct.file_entry* %23), !dbg !193
+  br label %24, !dbg !194
 
 ; <label>:24                                      ; preds = %18
-  %25 = load i32* %i, align 4, !dbg !189
-  %26 = add i32 %25, 1, !dbg !189
-  store i32 %26, i32* %i, align 4, !dbg !189
-  br label %12, !dbg !189
+  %25 = load i32* %i, align 4, !dbg !187
+  %26 = add i32 %25, 1, !dbg !187
+  store i32 %26, i32* %i, align 4, !dbg !187
+  br label %12, !dbg !187
 
 ; <label>:27                                      ; preds = %12
-  ret i32 0, !dbg !197
+  ret i32 0, !dbg !195
 }
 
 declare %struct._IO_FILE* @fopen(i8*, i8*) #2
@@ -430,7 +424,7 @@ attributes #6 = { nounwind }
 !107 = metadata !{i32 786478, metadata !1, metadata !10, metadata !"consume_record", metadata !"consume_record", metadata !"", i32 52, metadata !108, i1 false, i1 true, i32 0, i32 0, null, i32 256, i1 false, void (%struct.file_entry*)* @consume_record, null, null, metadata !7, i32 52} ; [ DW_TAG_subprogram ] [line 52] [def] [consume_record]
 !108 = metadata !{i32 786453, i32 0, null, metadata !"", i32 0, i64 0, i64 0, i64 0, i32 0, null, metadata !109, i32 0, null, null, null} ; [ DW_TAG_subroutine_type ] [line 0, size 0, align 0, offset 0] [from ]
 !109 = metadata !{null, metadata !92}
-!110 = metadata !{i32 786478, metadata !1, metadata !10, metadata !"main", metadata !"main", metadata !"", i32 81, metadata !111, i1 false, i1 true, i32 0, i32 0, null, i32 256, i1 false, i32 (i32, i8**)* @main, null, null, metadata !7, i32 81} ; [ DW_TAG_subprogram ] [line 81] [def] [main]
+!110 = metadata !{i32 786478, metadata !1, metadata !10, metadata !"main", metadata !"main", metadata !"", i32 79, metadata !111, i1 false, i1 true, i32 0, i32 0, null, i32 256, i1 false, i32 (i32, i8**)* @main, null, null, metadata !7, i32 79} ; [ DW_TAG_subprogram ] [line 79] [def] [main]
 !111 = metadata !{i32 786453, i32 0, null, metadata !"", i32 0, i64 0, i64 0, i64 0, i32 0, null, metadata !112, i32 0, null, null, null} ; [ DW_TAG_subroutine_type ] [line 0, size 0, align 0, offset 0] [from ]
 !112 = metadata !{metadata !26, metadata !26, metadata !113}
 !113 = metadata !{i32 786447, null, null, metadata !"", i32 0, i64 64, i64 64, i64 0, i32 0, metadata !28} ; [ DW_TAG_pointer_type ] [line 0, size 64, align 64, offset 0] [from ]
@@ -468,53 +462,51 @@ attributes #6 = { nounwind }
 !145 = metadata !{i32 786689, metadata !107, metadata !"ent", metadata !10, i32 16777268, metadata !92, i32 0, i32 0} ; [ DW_TAG_arg_variable ] [ent] [line 52]
 !146 = metadata !{i32 52, i32 0, metadata !107, null}
 !147 = metadata !{i32 53, i32 0, metadata !107, null}
-!148 = metadata !{i32 54, i32 0, metadata !107, null}
-!149 = metadata !{i32 55, i32 0, metadata !150, null}
-!150 = metadata !{i32 786443, metadata !1, metadata !107, i32 55, i32 0, i32 3} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
-!151 = metadata !{i32 58, i32 0, metadata !152, null} ; [ DW_TAG_imported_module ]
-!152 = metadata !{i32 786443, metadata !1, metadata !153, i32 58, i32 0, i32 6} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
-!153 = metadata !{i32 786443, metadata !1, metadata !154, i32 57, i32 0, i32 5} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
-!154 = metadata !{i32 786443, metadata !1, metadata !150, i32 55, i32 0, i32 4} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
-!155 = metadata !{i32 786688, metadata !156, metadata !"lava_131", metadata !10, i32 59, metadata !26, i32 0, i32 0} ; [ DW_TAG_auto_variable ] [lava_131] [line 59]
-!156 = metadata !{i32 786443, metadata !1, metadata !152, i32 58, i32 0, i32 7} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
-!157 = metadata !{i32 59, i32 0, metadata !156, null}
-!158 = metadata !{i32 60, i32 0, metadata !156, null}
-!159 = metadata !{i32 61, i32 0, metadata !156, null}
-!160 = metadata !{i32 62, i32 0, metadata !156, null}
-!161 = metadata !{i32 63, i32 0, metadata !156, null}
-!162 = metadata !{i32 64, i32 0, metadata !156, null}
-!163 = metadata !{i32 65, i32 0, metadata !156, null}
-!164 = metadata !{i32 66, i32 0, metadata !153, null}
-!165 = metadata !{i32 786688, metadata !153, metadata !"kbcieiubweuhc1714636915", metadata !10, i32 67, metadata !26, i32 0, i32 0} ; [ DW_TAG_auto_variable ] [kbcieiubweuhc1714636915] [line 67]
-!166 = metadata !{i32 67, i32 0, metadata !153, null}
-!167 = metadata !{i32 70, i32 0, metadata !154, null}
-!168 = metadata !{i32 71, i32 0, metadata !169, null}
-!169 = metadata !{i32 786443, metadata !1, metadata !150, i32 71, i32 0, i32 8} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
-!170 = metadata !{i32 72, i32 0, metadata !171, null}
-!171 = metadata !{i32 786443, metadata !1, metadata !169, i32 71, i32 0, i32 9} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
-!172 = metadata !{i32 73, i32 0, metadata !171, null}
-!173 = metadata !{i32 75, i32 0, metadata !174, null}
-!174 = metadata !{i32 786443, metadata !1, metadata !169, i32 74, i32 0, i32 10} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
-!175 = metadata !{i32 76, i32 0, metadata !174, null}
-!176 = metadata !{i32 78, i32 0, metadata !107, null}
-!177 = metadata !{i32 79, i32 0, metadata !107, null}
-!178 = metadata !{i32 786689, metadata !110, metadata !"argc", metadata !10, i32 16777297, metadata !26, i32 0, i32 0} ; [ DW_TAG_arg_variable ] [argc] [line 81]
-!179 = metadata !{i32 81, i32 0, metadata !110, null}
-!180 = metadata !{i32 786689, metadata !110, metadata !"argv", metadata !10, i32 33554513, metadata !113, i32 0, i32 0} ; [ DW_TAG_arg_variable ] [argv] [line 81]
-!181 = metadata !{i32 786688, metadata !110, metadata !"f", metadata !10, i32 82, metadata !20, i32 0, i32 0} ; [ DW_TAG_auto_variable ] [f] [line 82]
+!148 = metadata !{i32 54, i32 0, metadata !149, null}
+!149 = metadata !{i32 786443, metadata !1, metadata !107, i32 54, i32 0, i32 3} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
+!150 = metadata !{i32 57, i32 0, metadata !151, null}
+!151 = metadata !{i32 786443, metadata !1, metadata !152, i32 57, i32 0, i32 6} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
+!152 = metadata !{i32 786443, metadata !1, metadata !153, i32 56, i32 0, i32 5} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
+!153 = metadata !{i32 786443, metadata !1, metadata !149, i32 54, i32 0, i32 4} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
+!154 = metadata !{i32 786688, metadata !155, metadata !"lava_131", metadata !10, i32 58, metadata !26, i32 0, i32 0} ; [ DW_TAG_auto_variable ] [lava_131] [line 58]
+!155 = metadata !{i32 786443, metadata !1, metadata !151, i32 57, i32 0, i32 7} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
+!156 = metadata !{i32 58, i32 0, metadata !155, null} ; [ DW_TAG_imported_module ]
+!157 = metadata !{i32 59, i32 0, metadata !155, null}
+!158 = metadata !{i32 60, i32 0, metadata !155, null}
+!159 = metadata !{i32 61, i32 0, metadata !155, null}
+!160 = metadata !{i32 62, i32 0, metadata !155, null}
+!161 = metadata !{i32 63, i32 0, metadata !155, null}
+!162 = metadata !{i32 64, i32 0, metadata !155, null}
+!163 = metadata !{i32 786688, metadata !152, metadata !"kbcieiubweuhc1714636915", metadata !10, i32 65, metadata !26, i32 0, i32 0} ; [ DW_TAG_auto_variable ] [kbcieiubweuhc1714636915] [line 65]
+!164 = metadata !{i32 65, i32 0, metadata !152, null}
+!165 = metadata !{i32 68, i32 0, metadata !153, null}
+!166 = metadata !{i32 69, i32 0, metadata !167, null}
+!167 = metadata !{i32 786443, metadata !1, metadata !149, i32 69, i32 0, i32 8} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
+!168 = metadata !{i32 70, i32 0, metadata !169, null}
+!169 = metadata !{i32 786443, metadata !1, metadata !167, i32 69, i32 0, i32 9} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
+!170 = metadata !{i32 71, i32 0, metadata !169, null}
+!171 = metadata !{i32 73, i32 0, metadata !172, null}
+!172 = metadata !{i32 786443, metadata !1, metadata !167, i32 72, i32 0, i32 10} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
+!173 = metadata !{i32 74, i32 0, metadata !172, null}
+!174 = metadata !{i32 76, i32 0, metadata !107, null}
+!175 = metadata !{i32 77, i32 0, metadata !107, null}
+!176 = metadata !{i32 786689, metadata !110, metadata !"argc", metadata !10, i32 16777295, metadata !26, i32 0, i32 0} ; [ DW_TAG_arg_variable ] [argc] [line 79]
+!177 = metadata !{i32 79, i32 0, metadata !110, null}
+!178 = metadata !{i32 786689, metadata !110, metadata !"argv", metadata !10, i32 33554511, metadata !113, i32 0, i32 0} ; [ DW_TAG_arg_variable ] [argv] [line 79]
+!179 = metadata !{i32 786688, metadata !110, metadata !"f", metadata !10, i32 80, metadata !20, i32 0, i32 0} ; [ DW_TAG_auto_variable ] [f] [line 80]
+!180 = metadata !{i32 80, i32 0, metadata !110, null}
+!181 = metadata !{i32 786688, metadata !110, metadata !"head", metadata !10, i32 82, metadata !79, i32 0, i32 0} ; [ DW_TAG_auto_variable ] [head] [line 82]
 !182 = metadata !{i32 82, i32 0, metadata !110, null}
-!183 = metadata !{i32 786688, metadata !110, metadata !"head", metadata !10, i32 84, metadata !79, i32 0, i32 0} ; [ DW_TAG_auto_variable ] [head] [line 84]
-!184 = metadata !{i32 84, i32 0, metadata !110, null}
-!185 = metadata !{i32 86, i32 0, metadata !110, null}
+!183 = metadata !{i32 84, i32 0, metadata !110, null}
+!184 = metadata !{i32 85, i32 0, metadata !110, null}
+!185 = metadata !{i32 786688, metadata !110, metadata !"i", metadata !10, i32 87, metadata !13, i32 0, i32 0} ; [ DW_TAG_auto_variable ] [i] [line 87]
 !186 = metadata !{i32 87, i32 0, metadata !110, null}
-!187 = metadata !{i32 786688, metadata !110, metadata !"i", metadata !10, i32 89, metadata !13, i32 0, i32 0} ; [ DW_TAG_auto_variable ] [i] [line 89]
-!188 = metadata !{i32 89, i32 0, metadata !110, null}
-!189 = metadata !{i32 90, i32 0, metadata !190, null}
-!190 = metadata !{i32 786443, metadata !1, metadata !110, i32 90, i32 0, i32 11} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
-!191 = metadata !{i32 786688, metadata !192, metadata !"ent", metadata !10, i32 91, metadata !92, i32 0, i32 0} ; [ DW_TAG_auto_variable ] [ent] [line 91]
-!192 = metadata !{i32 786443, metadata !1, metadata !190, i32 90, i32 0, i32 12} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
-!193 = metadata !{i32 91, i32 0, metadata !192, null}
-!194 = metadata !{i32 92, i32 0, metadata !192, null}
-!195 = metadata !{i32 93, i32 0, metadata !192, null}
-!196 = metadata !{i32 95, i32 0, metadata !192, null}
-!197 = metadata !{i32 96, i32 0, metadata !110, null}
+!187 = metadata !{i32 88, i32 0, metadata !188, null}
+!188 = metadata !{i32 786443, metadata !1, metadata !110, i32 88, i32 0, i32 11} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
+!189 = metadata !{i32 786688, metadata !190, metadata !"ent", metadata !10, i32 89, metadata !92, i32 0, i32 0} ; [ DW_TAG_auto_variable ] [ent] [line 89]
+!190 = metadata !{i32 786443, metadata !1, metadata !188, i32 88, i32 0, i32 12} ; [ DW_TAG_lexical_block ] [/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c]
+!191 = metadata !{i32 89, i32 0, metadata !190, null}
+!192 = metadata !{i32 90, i32 0, metadata !190, null}
+!193 = metadata !{i32 91, i32 0, metadata !190, null}
+!194 = metadata !{i32 93, i32 0, metadata !190, null}
+!195 = metadata !{i32 94, i32 0, metadata !110, null}

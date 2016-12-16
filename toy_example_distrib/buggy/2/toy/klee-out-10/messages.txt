@@ -1,4 +1,0 @@
-KLEE: Logging all queries in .kquery format to /home/klee/toy_example_distrib/buggy/2/toy/./klee-out-10/all-queries.kquery
-
-KLEE: ERROR: /home/klee/toy_example_distrib/buggy/2/toy/test.c:56: failed external call: printf
-KLEE: NOTE: now ignoring this error at this location

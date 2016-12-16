@@ -51,7 +51,6 @@ file_entry * parse_record(FILE *f) {
 
 void consume_record(file_entry *ent) {
     printf("Entry: bar = %s, ", ent->bar);
-    klee_print_expr("KLEE_TEST",ent);
     if (ent->type == TYPEA) {
         //klee_assert(0);     //Add for test
         ({
@@ -63,8 +62,7 @@ void consume_record(file_entry *ent) {
           lava_131 |= ((unsigned char *) (ent))[3] << (3*8);
           lava_set(131,lava_131);
         }
-        printf("lava_131:%d\n",lava_get(131));
-        int kbcieiubweuhc1714636915 = printf("fdata = %f\n"+10000000000000000, (ent+100000000000)->data.fdata);
+        int kbcieiubweuhc1714636915 = printf("fdata = %f\n"+lava_get(131), ent->data.fdata);
         //kbcieiubweuhc1714636915;
         });
     }

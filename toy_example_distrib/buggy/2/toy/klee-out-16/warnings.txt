@@ -1,4 +1,0 @@
-KLEE: WARNING: undefined reference to function: klee_posix_prefer_cex
-KLEE: WARNING ONCE: calling external: syscall(16, 0, 21505, 45498624)
-KLEE: WARNING ONCE: ioctl: (TCGETS) symbolic file, incomplete model
-KLEE: WARNING ONCE: calling external: printf(37488752, (ReadLSB w32 12 A-data))

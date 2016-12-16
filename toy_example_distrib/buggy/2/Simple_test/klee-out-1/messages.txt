@@ -1,2 +1,0 @@
-KLEE: Logging all queries in .kquery format to /home/klee/toy_example_distrib/buggy/2/Simple_test/./klee-out-1/all-queries.kquery
-

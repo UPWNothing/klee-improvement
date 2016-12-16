@@ -316,7 +316,6 @@ namespace {
             cl::init(true));
 }
 
-
 namespace klee {
   RNG theRNG;
 }
@@ -1257,11 +1256,35 @@ void Executor::executeCall(ExecutionState &state,
   Instruction *i = ki->inst;
   if (f && f->isDeclaration()) {
     switch(f->getIntrinsicID()) {
-    case Intrinsic::not_intrinsic:
-      // state may be destroyed by this call, cannot touch
-      callExternalFunction(state, ki, f, arguments);
-      break;
-        
+    case Intrinsic::not_intrinsic: {
+      // Check Arguments
+      int i=0;
+      //ExecutionState tmpState = ExecutionState(state);
+      if (strcmp(f->getName().str().c_str(),"printf") == 0) {
+        klee_warning("JUST FOR TEST: printf found!");
+	for (std::vector< ref<Expr> >::iterator
+              	ai = arguments.begin(), ie = arguments.end();
+		 ai != ie; ++ai) {
+	  //Expr::Width to, from = (*ai)->getWidth();
+	  klee_warning("Checking Arguments[%d]!",i);
+
+
+          /**
+           * checkParametersBounds(.....) is modified based on executeMemoryOperation(...)
+           * TODO: Try to make it take all the arguments, and check the bounds simultaneously.
+           */
+	  //checkParametersBounds(state, arguments[0], ki);
+          
+          // ****************************** arguments[i] will lead to an error *********** 
+          executeMemoryOperation(state, false, arguments[0], 0, ki);
+          // *****************************************************************************
+	  i++; 
+	}
+      }
+	// state may be destroyed by this call, cannot touch
+	callExternalFunction(state, ki, f, arguments);
+	break;
+    }    
       // va_arg is handled by caller and intrinsic lowering, see comment for
       // ExecutionState::varargs
     case Intrinsic::vastart:  {
@@ -3753,3 +3776,107 @@ Interpreter *Interpreter::create(const InterpreterOptions &opts,
                                  InterpreterHandler *ih) {
   return new Executor(opts, ih);
 }
+
+
+int Executor::checkParametersBounds(ExecutionState &state,
+                                      ref<Expr> address,
+                                      KInstruction *target ){
+  Expr::Width type = getWidthForLLVMType(target->inst->getType());
+  unsigned bytes = Expr::getMinBytesForWidth(type);
+
+  if (SimplifySymIndices) {
+    if (!isa<ConstantExpr>(address))
+      address = state.constraints.simplifyExpr(address);
+  }
+
+  // fast path: single in-bounds resolution
+  ObjectPair op;
+  bool success;
+  solver->setTimeout(coreSolverTimeout);
+  if (!state.addressSpace.resolveOne(state, solver, address, op, success)) {
+    address = toConstant(state, address, "resolveOne failure");
+    success = state.addressSpace.resolveOne(cast<ConstantExpr>(address), op);
+  }
+  solver->setTimeout(0);
+  
+  if (success) {
+    const MemoryObject *mo = op.first;
+
+    if (MaxSymArraySize && mo->size>=MaxSymArraySize) {
+      address = toConstant(state, address, "max-sym-array-size");
+    }
+    
+    ref<Expr> offset = mo->getOffsetExpr(address);
+
+    bool inBounds;
+    solver->setTimeout(coreSolverTimeout);
+    bool success = solver->mustBeTrue(state, 
+                                      mo->getBoundsCheckOffset(offset, bytes),
+                                      inBounds);
+    solver->setTimeout(0);
+    if (!success) {
+      state.pc = state.prevPC;
+      terminateStateEarly(state, "Query timed out (bounds check).");
+      return -1;
+    }
+
+    if (inBounds) {
+      //const ObjectState *os = op.second;
+      
+        //ref<Expr> result = os->read(offset, type);
+        
+       // if (interpreterOpts.MakeConcreteSymbolic)
+         // result = replaceReadWithSymbolic(state, result);
+        
+        //bindLocal(target, state, result);
+      return 1;
+    }
+  } 
+
+  // we are on an error path (no resolution, multiple resolution, one
+  // resolution with out of bounds)
+  
+  ResolutionList rl;  
+  solver->setTimeout(coreSolverTimeout);
+  bool incomplete = state.addressSpace.resolve(state, solver, address, rl,
+                                               0, coreSolverTimeout);
+  solver->setTimeout(0);
+  
+  // XXX there is some query wasteage here. who cares?
+  ExecutionState *unbound = &state;
+  
+  for (ResolutionList::iterator i = rl.begin(), ie = rl.end(); i != ie; ++i) {
+    const MemoryObject *mo = i->first;
+    const ObjectState *os = i->second;
+    ref<Expr> inBounds = mo->getBoundsCheckPointer(address, bytes);
+    
+    StatePair branches = fork(*unbound, inBounds, true);
+    ExecutionState *bound = branches.first;
+
+    // bound can be 0 on failure or overlapped 
+    if (bound) {
+      
+        //ref<Expr> result = os->read(mo->getOffsetExpr(address), type);
+        //bindLocal(target, *bound, result);
+     
+    }
+
+    unbound = branches.second;
+    if (!unbound)
+      break;
+  }
+  
+  // XXX should we distinguish out of bounds and overlapped cases?
+  if (unbound) {
+    if (incomplete) {
+      terminateStateEarly(*unbound, "Query timed out (resolve).");
+    } else {
+      terminateStateOnError(*unbound, "memory error: out of bound pointer", Ptr,
+                            NULL, getAddressInfo(*unbound, address));
+    }
+  }
+  return 0;
+}
+
+
+

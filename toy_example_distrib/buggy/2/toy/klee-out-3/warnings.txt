@@ -1,5 +1,0 @@
-KLEE: WARNING: undefined reference to function: klee_posix_prefer_cex
-KLEE: WARNING ONCE: calling external: syscall(16, 0, 21505, 54468320)
-KLEE: WARNING ONCE: ioctl: (TCGETS) symbolic file, incomplete model
-KLEE: WARNING ONCE: calling external: printf(71870688, (ReadLSB w32 12 A-data))
-KLEE: WARNING ONCE: silently concretizing (reason: floating point) expression (ReadLSB w32 36 A-data) to value 0 (/home/klee/toy_example_distrib/buggy/2/toy/toy.c:56)

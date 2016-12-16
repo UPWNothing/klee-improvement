@@ -1,4 +1,0 @@
-/home/klee/toy_example_distrib/buggy/2/toy/toy_test.c:48
-/home/klee/klee_build/klee-uclibc/libc/stdio/_READ.c:48
-/home/klee/klee_build/klee-uclibc/libc/stdio/_READ.c:49
-/home/klee/klee_build/klee-uclibc/libc/stdio/_READ.c:50
